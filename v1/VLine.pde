@@ -2,19 +2,33 @@ class VLine {
 
   
   IntList layerGens;
+  int linePointsAmount;
+  PVector[] linePoints;
   
   VLine(IntList g){
     layerGens = g;
     
     println(layerGens);
+    println("!!!!! Vertex Line !!!!!");
+    
+    println("StrokeWeight "+ layerGens.get(0));
+    
+    println("x randomness "+ layerGens.get(1));    
+    
+    println("y randomness "+ layerGens.get(2)); 
+    
+    println("linepointsamount "+ layerGens.get(3));
+    
+    linePointsAmount = layerGens.get(3)*2+1;
+    linePoints = new PVector[linePointsAmount];
     
     setCoordinates();
     drawLine();
   }
   
   void setCoordinates(){
-    float xRandomness = width/5;
-    float yRandomness = height/5;
+    float xRandomness = width/4+layerGens.get(1)*(100/linePointsAmount);
+    float yRandomness = height/4+layerGens.get(2)*(100/linePointsAmount);
     
     linePoints[0] = new PVector(random(width/2) + width/4, random(height/2) + height/4, 0);
     
@@ -40,6 +54,7 @@ class VLine {
     
     noFill();
     stroke(255);
+    strokeWeight(1+layerGens.get(0)/13);
     smooth();
     
     beginShape();  
