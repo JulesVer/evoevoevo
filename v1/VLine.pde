@@ -29,11 +29,11 @@ class VLine {
     
     maxDepth = 1+layerGens.get(5)*10;
     
-    setCoordinates();
+    reset();
     drawLine();
   }
   
-  void setCoordinates(){
+  void reset(){
     float xRandomness = width/4+layerGens.get(1)*(50/linePointsAmount);
     float yRandomness = height/4+layerGens.get(2)*(50/linePointsAmount);
     float zRandomness = maxDepth/4+layerGens.get(3)*(50/linePointsAmount);
@@ -91,7 +91,7 @@ class VLine {
         strokeWeight(2+distFromCenter);        
       }
       else{
-         strokeWeight(.5 + layerGens.get(0)/6);
+         strokeWeight(1 + layerGens.get(0)/2);
       }      
         
       curveVertex(linePoints[i].x,linePoints[i].y,linePoints[i].z);
